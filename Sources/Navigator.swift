@@ -128,7 +128,7 @@ public extension Navigator {
   ///   - urn: The urn
   ///   - payload: Optional payload
   /// - Throws: RouteError if the routing fails
-  public static func navigate(urn: String, payload: Any? = nil) throws {
+  static func navigate(urn: String, payload: Any? = nil) throws {
     let encodedUrn = PercentEncoder.encode(string: urn, allowedCharacters: delimiter)
     guard let url =  URL(string: "\(scheme)\(encodedUrn)") else {
       throw RouteError.notFound
@@ -143,7 +143,7 @@ public extension Navigator {
   ///   - urn: The url
   ///   - payload: Optional payload
   /// - Throws: RouteError if the routing fails
-  public static func navigate(url: URL, payload: Any? = nil) throws {
+  static func navigate(url: URL, payload: Any? = nil) throws {
     guard let location = parse(url: url, payload: payload) else {
       throw RouteError.notFound
     }
@@ -157,7 +157,7 @@ public extension Navigator {
   ///   - urn: The urn
   ///   - payload: Optional payload
   /// - Throws: RouteError if the routing fails
-  public static func navigate(location: Location) throws {
+  static func navigate(location: Location) throws {
     handle?(location)
   }
 }
